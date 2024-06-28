@@ -16,4 +16,4 @@ https://react.dev/learn/tutorial-tic-tac-toe <br><br>
 
 <b>Reviewed by:</b> Alicia Spruell <br>
 
-<b>Comments:</b> ______________________________________<br>
+<b>Comments:</b> Code looks good!! Css looks great. I love the Bates Motel theme with the board working like a neon sign. Real spooky vibes. Great job :)<br>
