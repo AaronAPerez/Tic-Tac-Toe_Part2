@@ -16,8 +16,6 @@ body {
 }
 
 
-
-
 .moves {
   margin: 0.2rem;
   border: none;
@@ -57,12 +55,12 @@ body {
   animation: flicker 1.5s infinite alternate;     
 }
 
-.col-6.col-md-4::-moz-selection {
+.square::-moz-selection {
   background-color: var(--neon-border-color);
   color: var(--neon-text-color);
 }
 
-.col-6.col-md-4::selection {
+.square::selection {
   background-color: var(--neon-border-color);
   color: var(--neon-text-color);
 }
