@@ -58,10 +58,10 @@ const Game = () => {
   return (
     <>
       <div className="row">
-      <div className="col-2">
+      <div className="col-4">
           <ol>{moves}</ol>
         </div>
-        <div className="col-10">
+        <div className="col-8">
           <div className="game">
             <div className="game-board">
               <Board

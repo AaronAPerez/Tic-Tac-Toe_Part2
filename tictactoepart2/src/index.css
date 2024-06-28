@@ -1,73 +1,63 @@
-@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
 
 :root {
-  /* Base font size */
-  font-size: 0.5rem;   
-  
   /* Set neon color */
   --neon-text-color: #f40;
   --neon-border-color: #08f;
 }
 
 body {
-  font-family: 'Exo 2', sans-serif;
-  background-color: black;
-
+  background-image: url("../src/assets/Bates_wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
-.moves {
+li, .moves {
   margin: 0.2rem;
   border: none;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.46);
 }
 
-.moves:hover{
- border-radius:1rem;
-  outline: solid 4px green;
+.moves:hover{ 
+  outline: solid 4px rgb(0, 15, 128);
 }
 
 .square {
   width: 10rem;
   height: 10rem;
-  font-weight: 200;
-  font-style: italic;
-  background-color: transparent;
+  background-color: rgb(0, 0, 0);
  border: none;
- border-radius: 2rem;
-  text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;     
 }
 
+.col-8 {
+  display: flex;
+  justify-content: left;
+}
 
+.col-4{
+  display: flex;
+  justify-content: right;
+}
 
 .col-6.col-md-4 {
-  width: 12rem;
-  height: 12rem;
-  font-size: 5rem;
-  font-weight: 200;
-  font-style: italic;
-  border-radius: 2rem;
-  text-transform: uppercase;
-  animation: flicker 1.5s infinite alternate;     
+  width: 11rem;
+  height: 11rem;
+  font-size: 6rem;
 }
 
-.square::-moz-selection {
+
+.col-6.col-md-4::selection {
   background-color: var(--neon-border-color);
   color: var(--neon-text-color);
 }
 
-.square::selection {
-  background-color: var(--neon-border-color);
-  color: var(--neon-text-color);
-}
-
-.col-6.col-md-4:focus {
-  outline: dotted 2px green;
-}
 
 /* Animate neon flicker */
 @keyframes flicker {
