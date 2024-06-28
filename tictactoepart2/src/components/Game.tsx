@@ -1,11 +1,16 @@
 // Import React and necessary hooks
 import { useState, useEffect } from "react";
-// Import the Board component
+// Import the Board component and related functions/types
+import { Board, calculateWinner, BoardProps } from "./Board";
 
-import Board from "./Board";
+// Define a new Reset button component
+const ResetButton = ({ onClick }: { onClick: () => void }) => (
+  <button className="reset-button" onClick={onClick}>
+    Reset Game
+  </button>
+);
 
-// The Game component doesn't take any props, so we don't need to define a props type
-
+// Define the main Game component
 const Game = () => {
   // State for the game history (array of board states)
   const [history, setHistory] = useState<Array<Array<string | null>>>([
@@ -17,6 +22,17 @@ const Game = () => {
   const xIsNext = currentMove % 2 === 0;
   // Get the current board state
   const currentSquares = history[currentMove];
+
+  // Calculate the game status
+  const winner = calculateWinner(currentSquares);
+  let status: string;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else if (currentSquares.every((square) => square !== null)) {
+    status = "It's a draw!";
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
 
   // useEffect hook to log the current move whenever it changes
   useEffect(() => {
@@ -32,6 +48,12 @@ const Game = () => {
     setCurrentMove(nextHistory.length - 1);
   };
 
+  // Add a new reset function
+  const handleReset = () => {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  };
+
   // Jump to a specific move in the game history
   const jumpTo = (nextMove: number) => {
     setCurrentMove(nextMove);
@@ -43,7 +65,7 @@ const Game = () => {
     if (move > 0) {
       description = "Go to move #" + move;
     } else {
-      description = "Go to game start";
+      description = "Go to start";
     }
     return (
       <li key={move}>
@@ -57,11 +79,10 @@ const Game = () => {
   // Render the game
   return (
     <>
-      <div className="row">
-      <div className="col-4">
-          <ol>{moves}</ol>
-        </div>
-        <div className="col-8">
+      {/* Render the game board and status */}
+      <div className="row my-5">
+        <div className="col-2 mt-2"></div>
+        <div className="col">
           <div className="game">
             <div className="game-board">
               <Board
@@ -72,9 +93,18 @@ const Game = () => {
             </div>
           </div>
         </div>
-        {/* <div className="col">
-          <ol>{moves}</ol>
-        </div> */}
+        <div className="col-3">
+          <div className="status my-5">{status}</div>
+          <ResetButton onClick={handleReset} />
+        </div>
+      </div>
+      {/* Render the move history */}
+      <div className="footer py-2">
+        <div className="row">
+          <div className="col">
+            <ol>{moves}</ol>
+          </div>
+        </div>
       </div>
     </>
   );

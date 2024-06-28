@@ -1,4 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 
+	
 
 :root {
   /* Set neon color */
@@ -12,51 +14,93 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
-
 li, .moves {
-  margin: 0.2rem;
+  margin-right: 1rem;
+  float: inline-start;
+  width: 6.8rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+color: whitesmoke;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
   border: none;
   font-size: 1.2rem;
+  width: 12rem;
   font-weight: bold;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.46);
+  background-color: rgba(7, 88, 158, 0.466);
+  border: solid 5px whitesmoke;
+  font-size: 1.4rem;
+  font-weight: bold;
+color: whitesmoke;
+}
+
+.reset-button{
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  width: 12rem;
+  font-weight: bold;
+  background-color: rgba(134, 46, 8, 0.458);
+  border: solid 5px whitesmoke;
+  font-size: 1.4rem;
+  font-weight: bold;
+color: whitesmoke;
+
+}
+
+button {
+  background-color: transparent;
 }
 
 .moves:hover{ 
-  outline: solid 4px rgb(0, 15, 128);
+  outline: solid 4px rgba(10, 40, 101, 0.878);
 }
 
 .square {
-  width: 10rem;
-  height: 10rem;
-  background-color: rgb(0, 0, 0);
- border: none;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.611);
+  border: none;
   animation: flicker 1.5s infinite alternate;     
+  padding-bottom: 0rem;
+  padding-top: 0rem;
 }
 
-.col-8 {
-  display: flex;
-  justify-content: left;
+.text-center {
+animation: flicker 1.5s infinite alternate;    
 }
 
-.col-4{
-  display: flex;
-  justify-content: right;
+.board-row{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer{
+  font-size: 2%;
+animation: flicker 1.5s infinite alternate;    
 }
 
 .col-6.col-md-4 {
-  width: 11rem;
-  height: 11rem;
-  font-size: 6rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 0rem;
+  padding-bottom: rem;
+ max-width: 11rem;
+max-height: 11rem;
+  font-size: 4.5rem;
 }
 
 
-.col-6.col-md-4::selection {
-  background-color: var(--neon-border-color);
-  color: var(--neon-text-color);
-}
+
 
 
 /* Animate neon flicker */

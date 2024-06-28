@@ -1,8 +1,5 @@
 // Import React and the Square component
-
 import Square from "./Square";
-
-
 
 // Define the props interface for the Board component
 interface BoardProps {
@@ -11,7 +8,7 @@ interface BoardProps {
   onPlay: (nextSquares: Array<string | null>) => void; // Function to call when a move is made
 }
 
-// Use the BoardProps type in the component function signature
+// Define the Board component using the BoardProps interface
 const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
   // Handler for when a square is clicked
   const handleClick = (i: number) => {
@@ -37,6 +34,8 @@ const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
   let status: string;
   if (winner) {
     status = "Winner: " + winner;
+  } else if (squares.every((square) => square !== null)) {
+    status = "It's a draw!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -44,55 +43,56 @@ const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
   // Render the board
   return (
     <>
-
-        <div className="status">{status}</div>
-        <div className="board-row">
-          <div className="row">
-            <div className="col-6 col-md-4">
-              <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-            </div>
+      {/* Render each row of the board */}
+      <div className="board-row">
+        <div className="row">
+          {/* Render each square in the row */}
+          <div className="col-6 col-md-4">
+            <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
           </div>
         </div>
-        <div className="board-row">
-          <div className="row">
-            <div className="col-6 col-md-4">
-              <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-            </div>
+      </div>
+      <div className="board-row">
+        <div className="row">
+          {/* Render each square in the row */}
+          <div className="col-6 col-md-4">
+            <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
           </div>
         </div>
-        <div className="board-row">
-          <div className="row">
-            <div className="col-6 col-md-4">
-              <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-            </div>
-            <div className="col-6 col-md-4">
-              <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-            </div>
+      </div>
+      <div className="board-row">
+        <div className="row">
+          {/* Render each square in the row */}
+          <div className="col-6 col-md-4">
+            <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
+          </div>
+          <div className="col-6 col-md-4">
+            <Square value={squares[8]} onSquareClick={() => handleClick()} />
           </div>
         </div>
-
+      </div>
     </>
   );
 };
 
 // Helper function to calculate the winner
 const calculateWinner = (squares: Array<string | null>): string | null => {
-  // All possible winning combinations
+  // Define all possible winning combinations
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -115,5 +115,6 @@ const calculateWinner = (squares: Array<string | null>): string | null => {
   return null;
 };
 
-// Export the Board component as the default export
-export default Board;
+// Export the Board component, calculateWinner function, and BoardProps interface
+export { Board, calculateWinner };
+export type { BoardProps };
